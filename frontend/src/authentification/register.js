@@ -12,16 +12,14 @@ export default function DisplayRegister() {
     return email.length > 0 && password.length > 0 && confirmPassword.length > 0;
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    axios({
+    const res = await axios({
         method: "POST",
         url: "http://localhost:8000/api/user",
         data: {email, password, confirmPassword}
-    }).then((data) => {
-        console.log(data);
-        return data;
-    })
+    });
+    console.log(res)
   }
 
   return (
