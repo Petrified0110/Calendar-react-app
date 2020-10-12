@@ -1,0 +1,26 @@
+.activeUser {
+    font-size: 30px;
+    box-sizing: border-box;
+    width: 50%;
+    display: relative;
+    float:right;
+    justify-content: right;
+    margin-bottom: 2em;
+    color: #A25E12;
+    display: flex;
+    align-items: right;
+  }
+
+  .user{
+    text-align: right; 
+    align-content: flex-end;
+    padding: 10px;
+    align-self: right;
+  }
+
+  .icon{
+    margin-left: auto;
+    margin-right: 0;
+    align-self: center;
+    padding-right: 10px;
+  }

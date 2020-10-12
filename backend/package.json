@@ -11,6 +11,9 @@
   "author": "Horvath Petra",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "firebase": "^7.23.0",
+    "firebase-admin": "^9.2.0"
   }
 }
