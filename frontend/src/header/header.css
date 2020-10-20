@@ -1,9 +1,7 @@
-.header {
-    box-sizing: border-box;
-    width: 100%;
-    display: relative;
-    justify-content: left;
-    padding: 1em;
-    margin-bottom: 2em;
-    background-color: rgb(54, 153, 104);
+.heather {
+  background-color: white;
 }
+
+.rt-th {
+    overflow: visible !important;
+  }

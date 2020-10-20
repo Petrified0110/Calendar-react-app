@@ -1,9 +1,17 @@
 import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 import axios from "axios";
+import {getLanguagePref} from '../authentification/auth';
+import {passwordText, confirmPasswordText, registerText} from '../siteTexts';
 import "./register.css";
 
+const language = getLanguagePref();
+
 export default function DisplayRegister() {
+  let history = useHistory();
+
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmationPassword] = useState("");
@@ -14,12 +22,12 @@ export default function DisplayRegister() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const res = await axios({
+    await axios({
         method: "POST",
         url: "http://localhost:8000/api/user",
         data: {email, password, confirmPassword}
     });
-    console.log(res)
+    history.push('/');
   }
 
   return (
@@ -35,7 +43,7 @@ export default function DisplayRegister() {
           />
         </FormGroup>
         <FormGroup controlId="password" bsSize="large">
-          <label>Password</label>
+          <label>{passwordText[language.key]}</label>
           <FormControl
             value={password}
             onChange={e => setPassword(e.target.value)}
@@ -43,7 +51,7 @@ export default function DisplayRegister() {
           />
         </FormGroup>
         <FormGroup controlId="confirmPassword" bsSize="large">
-          <label>Confirm Password</label>
+          <label>{confirmPasswordText[language.key]}</label>
           <FormControl
             value={confirmPassword}
             onChange={e => setConfirmationPassword(e.target.value)}
@@ -51,7 +59,7 @@ export default function DisplayRegister() {
           />
         </FormGroup>
         <Button block bsSize="large" disabled={!validateForm()} type="submit">
-          Register
+          {registerText[language.key]}
         </Button>
       </form>
     </div>

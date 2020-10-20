@@ -1,44 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import moment from 'moment'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import moment from 'moment';
 import { momentLocalizer } from 'react-big-calendar';
 import Basic from './calendar/calendar';
-import DisplayHeader from './header/header';
-import displayLogin from './authentification/login'
-import displayRegister from './authentification/register'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './header/header';
+import DisplayLogin from './authentification/login';
+import DisplayRegister from './authentification/register';
+import MainPage from '../src/mainpage/mainpage'
+import CreateEvent from '../src/event/createEvent'
+import ModifyEvent from '../src/event/modifyEvent'
+import 'semantic-ui-css/semantic.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function routingMethod(){
-    const localizer = momentLocalizer(moment)
+class App extends Component {
+    
+    render() {
+        let localizer = momentLocalizer(moment);
 
-
-    if(window.location.pathname === '/'){
-        return (
-        <div> 
-            <DisplayHeader/>
-            <Basic localizer={localizer}/>
-        </div>
-        )
-    }
-    else if(window.location.pathname === '/login'){
-        return (
-            <div>
-                <DisplayHeader/>
-                {displayLogin()}
-            </div>
-        )
-    } 
-    else if(window.location.pathname === '/register'){
-        return (
-            <div>
-                <DisplayHeader/>
-                {displayRegister()}
-            </div>
-        )
-    } 
-}
-
-const App = () => {
     return (
         <html>
             <head>
@@ -50,14 +29,41 @@ const App = () => {
                 <script src="semantic/dist/semantic.min.js"></script>
             </head>
         
-            <body>
-                {routingMethod()}
+            <body style={{'overflow':'visible !important'}}>
+                <Switch>
+                    <Route exact path="/">
+                        <Header/>
+                        <MainPage />
+                    </Route>
+                    <Route path="/modifyevent">
+                        <Header/>
+                        <ModifyEvent/>
+                    </Route>
+                    <Route path="/createevent">
+                        <Header/>
+                        <CreateEvent />
+                    </Route>
+                    <Route path="/calendar">
+                        <Header/>
+                        <Basic localizer={localizer} />
+                    </Route>
+                    <Route path="/login">
+                        <Header/>
+                        <DisplayLogin/>
+                    </Route>
+                    <Route path="/register">
+                        <Header/>
+                        <DisplayRegister/>
+                    </Route>
+                </Switch>
             </body>
         </html>
-    );
+    );}
 }
 
 ReactDOM.render(
-    <App />,
+    <Router>
+        <App />
+    </Router>,
     document.querySelector('#root')
 );

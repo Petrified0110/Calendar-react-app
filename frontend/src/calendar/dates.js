@@ -134,16 +134,24 @@ export function total(date, unit) {
     div = 1
 
   switch (unit) {
-    case 'week':
+    default :{
+      div *= 1
+      break}
+    case 'week':{
       div *= 7
-    case 'day':
+      break}
+    case 'day':{
       div *= 24
-    case 'hours':
+      break}
+    case 'hours':{
       div *= 60
-    case 'minutes':
+      break}
+    case 'minutes':{
       div *= 60
-    case 'seconds':
+      break}
+    case 'seconds':{
       div *= 1000
+      break}
   }
 
   return ms / div
