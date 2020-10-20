@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
+import {useHistory} from 'react-router-dom';
 import DatePicker from 'react-datepicker'
 import {Checkbox } from '@material-ui/core';
 import setHours from "date-fns/setHours";
@@ -7,7 +8,7 @@ import setMinutes from "date-fns/setMinutes";
 import {getUserEmail} from '../authentification/auth';
 import axios from "axios";
 import {getLanguagePref, getToken} from '../authentification/auth';
-import {modifyEvent, eventTitle, description, startDate, endDate, repeatableText, frequencyText, everyDay, everyMonth, everyWeek, howManyText, submitText, enterTitle} from '../siteTexts'
+import {modifyImageText, imageText, bigDescription, deleteText, modifyEvent, eventTitle, description, startDate, endDate, repeatableText, frequencyText, everyDay, everyMonth, everyWeek, howManyText, submitText, enterTitle} from '../siteTexts'
 import '../event/createEvent.css';
 import 'react-datepicker/src/stylesheets/datepicker.scss';
 
@@ -29,8 +30,22 @@ export default function ModifyEvent(){
   function validateForm() {
     return (start - end < 0);
   }
-
+  const history = useHistory();
     const { register, handleSubmit} = useForm();
+    
+    const onDelete = e =>{
+      e.preventDefault();
+
+      axios({
+        method: "DELETE",
+        url: `http://localhost:8000/api/event/${event.id}`,
+        headers: {
+          'Authorization': 'Bearer ' + getToken()
+        }
+      });
+      history.push("/calendar");
+    }
+ 
     const onSubmit = data => {
       if(validateForm()){
         axios({
@@ -47,10 +62,12 @@ export default function ModifyEvent(){
             repeatable: repeatable,
             startDate: start,
             title: data.title,
-            userEmail: getUserEmail()
+            userEmail: getUserEmail(),
+            bigDescription: data.bigDesc,
+            image: data.image,
             }}
       });
-
+      history.push("/calendar");
     }
     }
 
@@ -78,6 +95,28 @@ export default function ModifyEvent(){
                name="desc"
                defaultValue={event.description}
                placeholder={description[language.key]}
+               ref={register({required: false})}
+             />
+           </div>
+           <div className="form-group">
+             <label name="bigDescLable" for="bigDesc">{bigDescription[language.key]}</label>
+             <input
+               type="string"
+               className="form-control"
+               name="bigDesc"
+               defaultValue={event.bigDescription}
+               placeholder={description[language.key]}
+               ref={register({required: false})}
+             />
+           </div>
+           <div className="form-group">
+             <label name="image" for="image">{modifyImageText[language.key]}</label>
+             <input
+               type="file"
+               accept="image/*"
+               className="form-control"
+               name="image"
+               placeholder={imageText[language.key]}
                ref={register({required: false})}
              />
            </div>
@@ -135,6 +174,9 @@ export default function ModifyEvent(){
             </div>
            <button type="submit" className="btn btn-primary">
              {submitText[language.key]}
+           </button>
+           <button type="delete" style={{"margin-left": "48px"}} className="btn btn-primary" onClick={(e) => onDelete(e)}>
+             {deleteText[language.key]}
            </button>
          </form>
        </div>

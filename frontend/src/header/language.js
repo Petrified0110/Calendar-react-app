@@ -25,6 +25,7 @@ class Languages extends React.Component {
         const key = lang.key;
         setLanguagePref(lang);
         this.setState({ value, key});
+        document.location.reload(true);
     };
    
     render () {       

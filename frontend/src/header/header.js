@@ -3,9 +3,9 @@ import {Menu, Dropdown, Icon} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import {logout, getLanguagePref, isLoggedIn as checkLogIn} from '../authentification/auth';
-import {getUserEmail} from '../authentification/auth'
-import Languages from '../header/language'
-import {goToCalendar, createEvent, signIn, signUp, signedInAs, logoutText} from '../siteTexts'
+import {getUserEmail} from '../authentification/auth';
+import Languages from '../header/language';
+import {goToCalendar, createEvent, signIn, signUp, signedInAs, logoutText} from '../siteTexts';
 import './header.css';
 
 const language = getLanguagePref();
@@ -27,6 +27,7 @@ const options = [
     },
     { key: 'logout', text: (<Menu.Item as={Link} to="/">{logoutText[language.key]}</Menu.Item>), onClick: () => {
         logout();
+        document.location.reload(true);
      }},
     ];
 

@@ -6,125 +6,150 @@ export const goToCalendar ={
 
 export const createEvent ={
     "uk": "Create an Event",
-    "ro": ""
+    "ro": "Crează un eveniment"
 };
 
 export const modifyEvent ={
     "uk": "Modify your Event",
-    "ro": ""
+    "ro": "Modifică evenimentul"
 };
 
 export const signIn ={
     "uk": "Sign In!",
-    "ro": ""
+    "ro": "Intră în cont!"
 };
 
 export const signUp ={
     "uk": "Sign Up!",
-    "ro": ""
+    "ro": "Creează cont!"
 };
 
 export const signedInAs ={
     "uk": "Signed in as ",
-    "ro": ""
+    "ro": "Logat ca "
 };
 
 export const settings ={
     "uk": "Settings",
-    "ro": ""
+    "ro": "Setări"
 };
 
 export const logoutText ={
     "uk": "Logout",
-    "ro": ""
+    "ro": "Deconectează-te"
 };
 
 export const loginText ={
     "uk": "Login",
-    "ro": ""
+    "ro": "Loghează-te"
 };
 
 export const passwordText ={
     "uk": "Password",
-    "ro": ""
+    "ro": "Parola"
 };
 
 export const confirmPasswordText ={
-    "uk": "Confirm Password",
-    "ro": ""
+    "uk": "Confirm password",
+    "ro": "Confirmă parola"
 };
 
 export const registerText ={
     "uk": "Register",
-    "ro": ""
+    "ro": "Înregistrează-te"
 };
 
 export const eventTitle ={
     "uk": "Event Title",
-    "ro": ""
+    "ro": "Titlul Evenimentului"
 };
 
 export const description ={
     "uk": "Description",
-    "ro": ""
+    "ro": "Descriere"
 };
 
 export const startDate ={
     "uk": "Start Date",
-    "ro": ""
+    "ro": "Data la care începe"
 };
 
 export const endDate ={
     "uk": "End Date",
-    "ro": ""
+    "ro": "Data la care se termină"
 };
 
 export const repeatableText ={
     "uk": "Repeatable?",
-    "ro": ""
+    "ro": "Se repetă?"
 };
 
 export const frequencyText ={
     "uk": "With what frequency?",
-    "ro": ""
+    "ro": "Cât de des?"
 };
 
 export const everyDay ={
     "uk": "Every day",
-    "ro": ""
+    "ro": "În fiecare zi"
 };
 
 export const everyWeek ={
     "uk": "Every week",
-    "ro": ""
+    "ro": "În fiecare săptămână"
 };
 
 export const everyMonth ={
     "uk": "Every month",
-    "ro": ""
+    "ro": "În fiecare lună"
 };
 
 export const howManyText ={
     "uk": "How many times?",
-    "ro": ""
+    "ro": "De câte ori?"
 };
 
 export const submitText ={
     "uk": "Submit",
-    "ro": ""
+    "ro": "Trimite"
 };
 
 export const enterTitle ={
     "uk": "Enter title",
-    "ro": ""
+    "ro": "Introdu titlul"
 };
 
 export const mainPageHeader1 ={
     "uk": "Your PERSONAL Calendar",
-    "ro": ""
+    "ro": "Calendarul tău personal"
 };
 
 export const mainPageHeader2 ={
     "uk": "Don't worry about forgeting your aunt's birthday or about that life changing interview anymore!",
+    "ro": ""
+};
+
+export const deleteText ={
+    "uk": "Delete",
+    "ro": ""
+};
+
+export const imageText ={
+    "uk": "Add an image",
+    "ro": ""
+};
+
+export const bigDescription ={
+    "uk": "You can write html text here",
+    "ro": ""
+};
+
+export const modifyImageText ={
+    "uk": "If you want to overwrite the image that you have already uploaded, add an image",
+    "ro": ""
+};
+
+export const viewdImage ={
+    "uk": "Your image",
     "ro": ""
 };

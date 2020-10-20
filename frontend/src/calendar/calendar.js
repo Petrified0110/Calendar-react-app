@@ -11,12 +11,12 @@ let allViews = Object.keys(Views).map(k => Views[k]);
 let history;
 
 function hist(event){
-  history.push(`/modifyevent?event=${JSON.stringify(event)}&id=${event.id}`);
+  history.push(`/viewevent?event=${JSON.stringify(event)}&id=${event.id}`);
 }
 
 const RedirectBasic = () => {
   history = useHistory();
-  return (<Link to={'/modifyevent'}/>);
+  return (<Link to={'/viewevent'}/>);
 }
 
 class Basic extends React.Component {

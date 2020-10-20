@@ -4,6 +4,7 @@ const dotenv = require('dotenv').config({path: './config.env'});
 const userRoute = require("./routes/userRoute");
 const eventRoute = require("./routes/eventRoute");
 const authController = require('../backend/controllers/authController');
+const AppError = require('../backend/utils/appError');
 
 const app = express();
 

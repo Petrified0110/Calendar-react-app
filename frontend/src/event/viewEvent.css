@@ -1,0 +1,11 @@
+.element {
+    position: left;
+    white-space:nowrap;
+    float:left
+  }
+
+  .image{
+    margin:auto;
+    white-space:nowrap;
+    float:right;
+  }

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
+import {useHistory} from 'react-router-dom';
 import DatePicker from 'react-datepicker'
 import {Checkbox } from '@material-ui/core';
 import setHours from "date-fns/setHours";
@@ -7,7 +8,7 @@ import setMinutes from "date-fns/setMinutes";
 import {getUserEmail} from '../authentification/auth';
 import axios from "axios";
 import {getLanguagePref, getToken} from '../authentification/auth';
-import {eventTitle, description, startDate, endDate, repeatableText, frequencyText, everyDay, everyMonth, everyWeek, howManyText, submitText, createEvent, enterTitle} from '../siteTexts'
+import {bigDescription, imageText, eventTitle, description, startDate, endDate, repeatableText, frequencyText, everyDay, everyMonth, everyWeek, howManyText, submitText, createEvent, enterTitle} from '../siteTexts'
 import '../event/createEvent.css';
 import 'react-datepicker/src/stylesheets/datepicker.scss';
 
@@ -21,7 +22,7 @@ export default function CreateEvent(){
   function validateForm() {
     return (start - end < 0);
   }
-
+  const history = useHistory();
     const { register, handleSubmit } = useForm();
     const onSubmit = async(data) => {
       if(validateForm()){
@@ -39,12 +40,16 @@ export default function CreateEvent(){
             repeatable: repeatable,
             startDate: start,
             title: data.title,
-            userEmail: getUserEmail()
+            userEmail: getUserEmail(),
+            bigDescription: data.bigDesc,
+            image: data.image,
             }
       });
+      history.push("/calendar");
 
     }
     }
+    //TODO: check if image file is an image!!! + backend
 
   return (
      <div className="card" style={{ width: "18rem" }}>
@@ -68,6 +73,27 @@ export default function CreateEvent(){
                className="form-control"
                name="desc"
                placeholder={description[language.key]}
+               ref={register({required: false})}
+             />
+           </div>
+           <div className="form-group">
+             <label name="bigDescLable" for="bigDesc">{bigDescription[language.key]}</label>
+             <input
+               type="string"
+               className="form-control"
+               name="bigDesc"
+               placeholder={description[language.key]}
+               ref={register({required: false})}
+             />
+           </div>
+           <div className="form-group">
+             <label name="image" for="image">{imageText[language.key]}</label>
+             <input
+               type="file"
+               accept="image/*"
+               className="form-control"
+               name="image"
+               placeholder={imageText[language.key]}
                ref={register({required: false})}
              />
            </div>

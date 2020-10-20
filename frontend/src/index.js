@@ -10,6 +10,7 @@ import DisplayRegister from './authentification/register';
 import MainPage from '../src/mainpage/mainpage'
 import CreateEvent from '../src/event/createEvent'
 import ModifyEvent from '../src/event/modifyEvent'
+import ViewEvent from '../src/event/viewEvent'
 import 'semantic-ui-css/semantic.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -54,6 +55,10 @@ class App extends Component {
                     <Route path="/register">
                         <Header/>
                         <DisplayRegister/>
+                    </Route>
+                    <Route path="/viewevent">
+                        <Header/>
+                        <ViewEvent/>
                     </Route>
                 </Switch>
             </body>

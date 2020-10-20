@@ -17,6 +17,8 @@ export const getUserEvents = async() => {
     id: event.id,
     frequency: event.frequency,
     howManyTimes: event.howManyTimes,
+    repeatable: event.repeatable,
+    bigDescription: event.bigDescription
   };});
   return events;
 }

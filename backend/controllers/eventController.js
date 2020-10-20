@@ -68,7 +68,10 @@ exports.updateEvent = async(req, res, next) => {
     });
 };
 
-exports.deleteEvent = (req, res, next) => {
+exports.deleteEvent = async(req, res, next) => {
+
+    const {id} = req.params;
+    await db.collection("events").doc(id).delete();
     res.status(200).json({
         status: "success",
         data: null
