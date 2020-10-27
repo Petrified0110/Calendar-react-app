@@ -5,6 +5,7 @@ const authController = require("../controllers/authController");
 const router = new Router();
 
 router.route('/').get(authController.protect, eventController.getEvents).post( authController.protect, eventController.addEvent);
+router.route('/:id/image').post(authController.protect, eventController.addImageToEvent).delete(authController.protect, eventController.deleteSpecImage);
 router.route('/:id').get(authController.protect, eventController.getEvent).patch(eventController.updateEvent).delete(authController.protect, eventController.deleteEvent);
 
 module.exports = router;

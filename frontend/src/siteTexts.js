@@ -1,4 +1,3 @@
-
 export const goToCalendar ={
     "uk": "Go to your calendar",
     "ro": "Accesează-ți calendarul"
@@ -125,31 +124,31 @@ export const mainPageHeader1 ={
 };
 
 export const mainPageHeader2 ={
-    "uk": "Don't worry about forgeting your aunt's birthday or about that life changing interview anymore!",
+    "uk": "Don't worry about forgetting your aunt's birthday or about that life changing interview anymore!",
     "ro": ""
 };
 
 export const deleteText ={
     "uk": "Delete",
-    "ro": ""
+    "ro": "Șterge"
 };
 
 export const imageText ={
     "uk": "Add an image",
-    "ro": ""
+    "ro": "Adaugă o imagine"
 };
 
 export const bigDescription ={
     "uk": "You can write html text here",
-    "ro": ""
+    "ro": "Aici poți să scrii text html"
 };
 
 export const modifyImageText ={
     "uk": "If you want to overwrite the image that you have already uploaded, add an image",
-    "ro": ""
+    "ro": "Dacă vrei să înlocuiești imaginea deja salvată, adaugă o altă imagine"
 };
 
 export const viewdImage ={
     "uk": "Your image",
-    "ro": ""
+    "ro": "Imaginea ta"
 };

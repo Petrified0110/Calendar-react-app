@@ -37,45 +37,65 @@ const Header = () => {
     const isLoggedIn = checkLogIn();
 
     return (
+        <div className="center">
+            <div>
         <Menu secondary pointing>
+        <div className="title-component">
             <Menu.Item as={Link} to="/">
-                Calendar
+                <div className="title">
+                <em><b>Calendar</b></em>
+                </div>
             </Menu.Item>
-
+            </div>
+            <div className="header-component">
             {isLoggedIn &&(
                 <Menu.Item as={Link} to="/calendar">
                     {goToCalendar[language.key]}
                 </Menu.Item>
             )}
+                        </div>
 
+            <div className="header-component">
             {isLoggedIn &&(
                 <Menu.Item as={Link} to="/createevent">
                     {createEvent[language.key]}
                 </Menu.Item>
             )}
+                        </div>
 
+            <div className="header-component">
             {!isLoggedIn &&
                 <Menu.Item as={Link} to="/login" position="right">
                     {signIn[language.key]}
                 </Menu.Item>
             }
+                        </div>
 
+
+            <div className="header-component">
             {!isLoggedIn &&
                 <Menu.Item as={Link} to="/register">
                     {signUp[language.key]}
                 </Menu.Item>
             }
+                        </div>
 
+            <div className="header-component">
             <Menu.Item>
                 <Languages/>
             </Menu.Item>
+            </div>
 
-            {isLoggedIn &&(
-                <Menu.Menu position="right">
-                    <Dropdown trigger={trigger} options={options}/>
-                </Menu.Menu>
-            )}
+            <div className="header-component">
+                {isLoggedIn &&(
+                    <Menu.Item position="right">
+                        <Dropdown trigger={trigger} options={options}/>
+                    </Menu.Item>
+                )}
+            </div>
         </Menu>
+        </div>
+        </div>
     );
 }
 

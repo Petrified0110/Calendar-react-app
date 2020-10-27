@@ -1,0 +1,65 @@
+{
+    "users": {
+        "data": {
+            "glBUX3dTcuVDh8EZNz9n": {
+                "data": {
+                    "email": "miaumiau@miaumiau.miau",
+                    "password": "$2a$12$/A4OPtjKvS.XNFOTY6GfeujeXgNr40gz2wrja7UHFMMMN6r.OjHU2"
+                },
+                "type": "document"
+            },
+            "uvuJvNYMrKpDjRddVCvK": {
+                "email": "vauvau@vauvau.com",
+                "password": "$2a$12$piIEvaW91iUrViNnX.3KBuS2C4Clji7ZZ/ll6e26bxvH3E16/dYtS"
+            }
+        },
+        "type": "collection"
+    },
+    "events": {
+        "data": {
+            "2pP7gaAwyDWZ3U4wLbWT": {
+                "data": {
+                    "description": "gdgd",
+                    "bigDescription": "<em>An emphasized line.</em>",
+                    "title": "fd",
+                    "imageName": "2pP7gaAwyDWZ3U4wLbWT122749734_345838959847316_4136998446849537515_n.jpg",
+                    "image": "122749734_345838959847316_4136998446849537515_n.jpg",
+                    "startDate": "2020-10-29T18:29:54.000Z",
+                    "frequency": "day",
+                    "endDate": "2020-10-30T18:00:00.000Z",
+                    "howManyTimes": "1",
+                    "userEmail": "vauvau@vauvau.com",
+                    "repeatable": false
+                },
+                "type": "document"
+            },
+            "7gUWSIawyx5liF9oNUzV": {
+                "repeatable": false,
+                "imageName": "7gUWSIawyx5liF9oNUzV120136543_734090363809732_8078294790343288906_n.jpg",
+                "image": "7gUWSIawyx5liF9oNUzV120136543_734090363809732_8078294790343288906_n.jpg",
+                "endDate": "2020-10-27T13:10:00.000Z",
+                "userEmail": "miaumiau@miaumiau.miau",
+                "howManyTimes": "1",
+                "frequency": "day",
+                "bigDescription": "<dl>    <dt>Definition list</dt>    <dd>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</dd>    <dt>Lorem ipsum dolor sit amet</dt>    <dd>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</dd> </dl>",
+                "startDate": "2020-10-27T12:10:42.712Z",
+                "description": "",
+                "title": "event"
+            },
+            "rzZyua6IaCiS9UejpS0O": {
+                "description": "hello",
+                "frequency": "day",
+                "bigDescription": "<ul>    <li>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</li>    <li>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</li>    <li>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</li>    <li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li> </ul>             ",
+                "title": "10",
+                "image": "rzZyua6IaCiS9UejpS0O122753211_631363954211525_8911461162655157915_n.jpg",
+                "imageName": "rzZyua6IaCiS9UejpS0O122753211_631363954211525_8911461162655157915_n.jpg",
+                "endDate": "2020-11-27T16:30:00.000Z",
+                "howManyTimes": "1",
+                "userEmail": "miaumiau@miaumiau.miau",
+                "repeatable": true,
+                "startDate": "2020-10-30T15:23:03.000Z"
+            }
+        },
+        "type": "collection"
+    }
+}

@@ -18,7 +18,9 @@ export const getUserEvents = async() => {
     frequency: event.frequency,
     howManyTimes: event.howManyTimes,
     repeatable: event.repeatable,
-    bigDescription: event.bigDescription
+    bigDescription: event.bigDescription,
+    imageName: event.imageName
   };});
+  console.log(events);
   return events;
 }

@@ -5,6 +5,7 @@ const userRoute = require("./routes/userRoute");
 const eventRoute = require("./routes/eventRoute");
 const authController = require('../backend/controllers/authController');
 const AppError = require('../backend/utils/appError');
+const fileUpload = require('express-fileupload');
 
 const app = express();
 
@@ -12,6 +13,7 @@ const corsOptions = {
     origin: "*"
 };
 
+app.use(fileUpload());
 app.use(express.json());
 app.use(cors(corsOptions));
 

@@ -1,11 +1,42 @@
 .element {
+  padding-left: 20px;
     position: left;
     white-space:nowrap;
-    float:left
+    float:left;
   }
 
   .image{
     margin:auto;
     white-space:nowrap;
     float:right;
+    padding-right: 20px;
+    padding-top: 10px;
+  }
+
+  .image > img{
+    box-shadow: 0.4vw 0.4vw #dddddd;
+    transition: 0.2s; 
+  }
+
+  .image > img:hover{
+    transform: scale(1.04);
+    transition: 0.2s;
+  }
+
+  .event-title {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .submit-button{
+    padding-top: 10px;
+  }
+
+  .description{
+    display: inline-block;
+    word-wrap: break-word;
+   width: 400px;
+   white-space: normal;
+   text-overflow: ellipsis;
+    overflow: hidden;
   }

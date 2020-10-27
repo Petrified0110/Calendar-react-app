@@ -16,17 +16,20 @@ const language = getLanguagePref();
 
 export default function CreateEvent(){
   const [start, setStartDate] = useState(new Date());
-  const [end, setEndDate] = useState(new Date());
+  const [end, setEndDate] = useState(new Date(start.getFullYear(), start.getMonth(), start.getDate(), start.getHours() + 1, start.getMinutes()));
   const [repeatable, setRepeatable] = useState(false);
+  const [imageName, setImageName] = useState("");
 
   function validateForm() {
     return (start - end < 0);
   }
+
   const history = useHistory();
     const { register, handleSubmit } = useForm();
     const onSubmit = async(data) => {
+      //this.setState({selectedFile: data.image[0]});
       if(validateForm()){
-        await axios({
+        const res = await axios({
           method: "POST",
           url: "http://localhost:8000/api/event",
           headers: {
@@ -42,22 +45,40 @@ export default function CreateEvent(){
             title: data.title,
             userEmail: getUserEmail(),
             bigDescription: data.bigDesc,
-            image: data.image,
+            imageName: data.image[0] !== undefined ? data.image[0].name : imageName,
             }
       });
+
+      const imageData = new FormData();
+
+      imageData.append('file', data.image[0]);
+
+      if(imageName !== "" && validateForm())
+        await axios({
+          method: "POST",
+          url: `http://localhost:8000/api/event/${res.data.data.event}/image`,
+          headers: {
+            'Authorization': 'Bearer ' + getToken(),
+            'content-type': 'multipart/form-data'
+          },
+          data: imageData
+        });
+
       history.push("/calendar");
 
     }
+    else{console.log("Form not valid");}
+
     }
     //TODO: check if image file is an image!!! + backend
 
   return (
-     <div className="card" style={{ width: "18rem" }}>
+     <div className="card" style={{ width: "50%"}}>
        <div className="card-body">
          <h5 className="card-title">{createEvent[language.key]}</h5>
          <form onSubmit={handleSubmit(onSubmit)}>
            <div className="form-group">
-             <label name="titleLable" for="title">{eventTitle[language.key]}</label>
+             <label name="titleLable" for="title">{eventTitle[language.key]}</label><br/>
              <input
                type="string"
                className="form-control"
@@ -67,7 +88,7 @@ export default function CreateEvent(){
              />
            </div>
            <div className="form-group">
-             <label name="descLable" for="desc">{description[language.key]}</label>
+             <label name="descLable" for="desc">{description[language.key]}</label><br/>
              <input
                type="string"
                className="form-control"
@@ -77,28 +98,31 @@ export default function CreateEvent(){
              />
            </div>
            <div className="form-group">
-             <label name="bigDescLable" for="bigDesc">{bigDescription[language.key]}</label>
+             <label name="bigDescLable" for="bigDesc">{bigDescription[language.key]}</label><br/>
              <input
                type="string"
                className="form-control"
                name="bigDesc"
+               word-break="break-word"
+               aria-rowspan="10"
                placeholder={description[language.key]}
                ref={register({required: false})}
              />
            </div>
            <div className="form-group">
-             <label name="image" for="image">{imageText[language.key]}</label>
+             <label name="image" for="image">{imageText[language.key]}</label><br/>
              <input
                type="file"
                accept="image/*"
                className="form-control"
                name="image"
+               onChange={name => setImageName(name)}
                placeholder={imageText[language.key]}
                ref={register({required: false})}
              />
            </div>
            <div className="form-group">
-             <label name="startLable" for="start">{startDate[language.key]}</label>
+             <label name="startLable" for="start">{startDate[language.key]}</label><br/>
              <DatePicker
                 name="startDate"
                 selected={start}
@@ -106,15 +130,13 @@ export default function CreateEvent(){
                 showTimeSelect
                 timeFormat="HH:mm"
                 injectTimes={[
-                  setHours(setMinutes(new Date(), 1), 0),
                   setHours(setMinutes(new Date(), 5), 12),
-                  setHours(setMinutes(new Date(), 59), 23)
                 ]}
                 dateFormat="MMMM d, yyyy h:mm aa"
               />
            </div>
            <div className="form-group">
-             <label name="endLable" for="end">{endDate[language.key]}</label>
+             <label name="endLable" for="end">{endDate[language.key]}</label><br/>
             <DatePicker
                 name="endDate"
                 selected={end}
@@ -122,9 +144,7 @@ export default function CreateEvent(){
                 showTimeSelect
                 timeFormat="HH:mm"
                 injectTimes={[
-                  setHours(setMinutes(new Date(), 1), 0),
                   setHours(setMinutes(new Date(), 5), 12),
-                  setHours(setMinutes(new Date(), 59), 23)
                 ]}
                 dateFormat="MMMM d, yyyy h:mm aa"
               />
@@ -138,20 +158,22 @@ export default function CreateEvent(){
                 onChange={repeatable => setRepeatable(new Boolean(repeatable))}
             />
             <div>
-              <label name="freqLable" for="frequency">{frequencyText[language.key]}</label>
+              <label name="freqLable" for="frequency">{frequencyText[language.key]}</label><br/>
               <select name="frequency" ref={register({required: false})}>
                 <option value="day">{everyDay[language.key]}</option>
                 <option value="week">{everyWeek[language.key]}</option>
                 <option value="month">{everyMonth[language.key]}</option>
               </select>
-            </div>
+            </div><br/>
             <div>
-              <label name="howManyLable" for="howmanytimes">{howManyText[language.key]}</label>
+              <label name="howManyLable" for="howmanytimes">{howManyText[language.key]}</label><br/>
               <input name="howmanytimes" type="number" defaultValue="1" ref={register({ min: 1, max: 99 })} />
             </div>
-           <button type="submit" className="btn btn-primary">
+            <div className="submit-button">
+           <button type="submit" className="btn btn-primary" >
              {submitText[language.key]}
            </button>
+           </div>
          </form>
        </div>
      </div>

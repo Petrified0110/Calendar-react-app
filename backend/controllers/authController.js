@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 const {checkPassword, changedPasswordAfter} = require('../utils/passwordUtils');
-const db = require('../utils/db');
+const {db} = require('../utils/db');
 
 exports.loginUser = catchAsync(async (req, res, next) => {
     const { email, password } = req.body.credentials;

@@ -1,7 +1,8 @@
 const bcrypt = require('bcryptjs');
-const db = require('../utils/db');
+const {db} = require('../utils/db');
+const catchAsync = require('../utils/catchAsync');
 
-exports.addUser = async (req, res, next) => {
+exports.addUser =catchAsync( async (req, res, next) => {
     
     const { email, password} = req.body;
 
@@ -20,9 +21,9 @@ exports.addUser = async (req, res, next) => {
             message: `user ${email} was created`
         }
     });
-};
+});
 
-exports.getUser = (req, res, next) => {
+exports.getUser = catchAsync( async(req, res, next) => {
     res.status(200).json({
         status: "success",
         data: {
@@ -31,9 +32,9 @@ exports.getUser = (req, res, next) => {
         }
     });
 
-};
+});
 
-exports.getUsers = (req, res, next) => {
+exports.getUsers =catchAsync( async (req, res, next) => {
     res.status(200).json({
         status: "success",
         data: {
@@ -41,9 +42,9 @@ exports.getUsers = (req, res, next) => {
             users
         }
     });
-};
+});
 
-exports.updateUser = (req, res, next) => {
+exports.updateUser =catchAsync( (req, res, next) => {
     res.status(200).json({
         status: "success",
         data: {
@@ -51,11 +52,11 @@ exports.updateUser = (req, res, next) => {
             user
         }
     });
-};
+});
 
-exports.deleteUser = (req, res, next) => {
+exports.deleteUser =catchAsync( (req, res, next) => {
     res.status(200).json({
         status: "success",
         data: null
     });
-};
+});

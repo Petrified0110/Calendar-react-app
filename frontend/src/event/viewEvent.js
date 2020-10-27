@@ -21,15 +21,16 @@ export default function ViewEvent(){
 
   const history = useHistory();
     
-    const onDelete = e =>{
+    const onDelete = async(e) =>{
       e.preventDefault();
-      axios({
+      await axios({
         method: "DELETE",
         url: `http://localhost:8000/api/event/${event.id}`,
         headers: {
           'Authorization': 'Bearer ' + getToken()
         }
       });
+
       history.push("/calendar");
     }
  
@@ -78,14 +79,24 @@ export default function ViewEvent(){
 
   return (
     <div>
-        <div className="element">
-            <h2>{event.title}</h2>
-            <b>{event.description}</b> <br/><br/>
-            <p dangerouslySetInnerHTML={{__html:event.bigDescription}}/>
+        <div className="element" >
+            <div className="event-title">
+                <h2>{event.title}</h2>
+            </div>
+            {event.description !== "" && event.description !== undefined && 
+                <div>
+                    <b>{event.description}</b> <br/><br/>
+                </div>
+            }
+            {event.bigDescription !== "" && event.bigDescription !== undefined &&
+                <div className="description">
+                    <p dangerouslySetInnerHTML={{__html:event.bigDescription}}/>
+                </div> 
+            }
             <p>
                 {console.log(event.start)}
                 From <br/>{printDate(event.start)}&nbsp;&nbsp;<i>at</i> {printTime(event.start)}<br/>
-                Until <br/>{printDate(event.end)}&nbsp;&nbsp;<i>at</i> {printTime(event.start)}<br/>
+                Until <br/>{printDate(event.end)}&nbsp;&nbsp;<i>at</i> {printTime(event.end)}<br/>
             </p>
             <p>{printRep(event)}<br/></p>
             <button className="button" type="modify" className="btn btn-primary" onClick={(e) => onModify(e)}>
@@ -95,10 +106,12 @@ export default function ViewEvent(){
                 {deleteText[language.key]}
             </button>
         </div>
-        <div className="image">
-            <label name="imageLabel" for="label">{viewdImage[language.key]}</label><br/>
-            <img src={require("./submit.jpeg")} width="300"/>
-        </div>
+
+        {event.imageName !== undefined && <div className="image">
+            <label name="imageLabel" for="label"><b>{viewdImage[language.key]}</b></label><br/>
+            <img src={require(`./images/${event.imageName}`)} width="300"/>
+        </div>}
     </div>
   );
 }
+

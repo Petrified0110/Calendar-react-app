@@ -1,7 +1,47 @@
-.heather {
+.header {
   background-color: white;
 }
 
 .rt-th {
     overflow: visible !important;
   }
+
+.header-component {
+  align-self: center;
+  font-size: 14px;
+  transition-duration: 1s;
+}
+
+.header-component:hover {
+  display: block;
+  background-color: #D3D3D3;
+  height: 53.5px;
+  transition: all 1s;
+  align-self: center;
+  padding-top:8px; padding-bottom:8px
+}
+
+.title {
+  font-size: 30px;
+  align-self: center;
+}
+
+.title-component{
+  align-self: center;
+  transition-duration: 1s;
+}
+
+.title-component:hover{
+  display: block;
+  background-color: #D3D3D3;
+  height: 54px;
+  transition: all 1s;
+  align-self: center;
+}
+
+
+.center{
+    display: flex;
+    justify-content:'center';
+    align-items:'center';
+}
