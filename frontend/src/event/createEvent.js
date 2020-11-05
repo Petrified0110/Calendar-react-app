@@ -149,14 +149,13 @@ export default function CreateEvent(){
                 dateFormat="MMMM d, yyyy h:mm aa"
               />
             </div>
-
-            <label name="repeatLable" for="repeatable">{repeatableText[language.key]}</label>
-            <Checkbox
-                name="repeatable"
-                defaultValue={false}
-                rules={{ required: false }}
-                onChange={repeatable => setRepeatable(new Boolean(repeatable))}
-            />
+              <label name="repeatLable" for="repeatable">{repeatableText[language.key]}</label>
+              <Checkbox
+                  name="repeatable"
+                  defaultValue={false}
+                  rules={{ required: false }}
+                  onChange={repeatable => setRepeatable(new Boolean(repeatable))}
+              />
             <div>
               <label name="freqLable" for="frequency">{frequencyText[language.key]}</label><br/>
               <select name="frequency" ref={register({required: false})}>
